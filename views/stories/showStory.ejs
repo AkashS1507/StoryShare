@@ -11,12 +11,16 @@
         <p class="leading-relaxed whitespace-pre-line md:text-lg"><%= story.story %></p>
         <div class="card-actions justify-end mx-auto md:mx-0 mt-6">
           <a href="/stories" class="btn">⬅️<i class="fa-regular fa-arrow-left"></i>Back to Stories</a>
+          
+          <% if(userId && userId === story.author) { %>
           <span class="flex space-x-2">
             <a href="/stories/<%= story._id %>/edit" class="btn btn-outline btn-primary px-6">Edit</a>
             <form method="POST" action="/stories/<%= story._id %>?_method=DELETE" class="inline">
               <button class="btn btn-outline btn-neutral">Delete</button>
             </form>
           </span>
+          <% } %>
+          
         </div>
       </div>
     </div>
@@ -57,7 +61,7 @@
             
               <div class="">
                 <div class="flex flex-col md:flex-row md:items-baseline">
-                  <span class="font-medium">Emma Wilson</span>
+                  <span class="font-medium"><%= review.user.username %></span>
                   <span class="text-xs text-gray-500 md:ms-4" data-time="<%= review.createdAt %>"></span>
                 </div>
 
@@ -81,9 +85,13 @@
                     </svg>
                     <span class="likeCount"><%= Math.floor(Math.random() * (50 - 10 + 1)) + 10 %></span>
                   </button>
+
+                  <% if (userId && review.author === userId) { %>
                   <form method="POST" action="/stories/<%= story._id %>/reviews/<%= review._id %>?_method=DELETE" class="inline">
                     <button class="btn btn-soft btn-neutral btn-xs">Delete</button>
                   </form>
+                  <% } %>
+
                 </div>
                 
               </div>

@@ -8,11 +8,6 @@ const ExpressError = require("./utils/ExpressError");
 const dotenv = require("dotenv/config");
 const {clerkMiddleware, clerkClient, requireAuth, getAuth } = require("@clerk/express");
 
-const passport = require("passport");
-const LocalStrategy = require("passport-local");
-
-const User = require("./models/userSchema");
-
 const storyRoute = require("./routes/storyRoute.js");
 const reviewRoute = require("./routes/reviewRoute.js");
 
@@ -49,6 +44,10 @@ app.get("/index2", (req, res) => {
     res.render("index2.ejs");
 });
 
+app.get("/signin", (req, res) => {
+  res.render("signin.ejs");
+});
+
 // stories routes
 app.use("/stories", storyRoute);
 
@@ -56,13 +55,11 @@ app.use("/stories", storyRoute);
 app.use("/stories/:id/reviews", reviewRoute);
 
 
+// Clerk user info
 app.get('/user', async (req, res) => {
-  const { isAuthenticated, userId } = getAuth(req)
-  if (!isAuthenticated) {
-    return res.status(401).json({ error: 'User not authenticated' })
-  }
-  const user = await clerkClient.users.getUser(userId)
-  res.json(user)
+  const { userId } = getAuth(req);
+  const user = await clerkClient.users.getUser(userId);
+  res.send(user);
 });
 
 

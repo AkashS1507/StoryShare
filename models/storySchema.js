@@ -8,6 +8,7 @@ const storySchema = new mongoose.Schema({
   category: String,
   image: String,
   story: String,
+  author: String,
   reviews: [
     {
       type: Schema.Types.ObjectId,
