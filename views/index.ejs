@@ -1,0 +1,151 @@
+<% layout("boilerplate/boilerplate") %>
+  <div>
+    <!-- Welcome -->
+    <section class="py-20 px-4">
+      <div class="container mx-auto text-center max-w-4xl">
+        <div class="flex items-center justify-center gap-2 mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-sparkles w-6 h-6 text-pink-500" aria-hidden="true">
+            <path
+              d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z">
+            </path>
+            <path d="M20 2v4"></path>
+            <path d="M22 4h-4"></path>
+            <circle cx="4" cy="20" r="2"></circle>
+          </svg>
+          <span class="text-lg text-muted-foreground font-medium">Welcome to StoryShare</span>
+        </div>
+        <h1
+          class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent">
+          Everyone has a story — What's yours?
+        </h1>
+        <p class="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">Share your experiences, connect with others, and
+          discover amazing stories across Love, Adventure, Heartbreak, and Thriller.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/stories/create"
+            class="text-white bg-black inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive text-primary-foreground hover:bg-black/90 h-10 rounded-md has-[>svg]:px-4 text-lg px-8 py-6">
+            Start Writing ✨
+          </a>
+          <a href="stories"
+            class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border bg-background text-foreground hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 h-10 hover:text-black rounded-md has-[>svg]:px-4 text-lg px-8 py-6">
+            Explore Stories
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Choose Genere -->
+    <section class="py-16 px-4">
+      <div class="container mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12">Choose Your Genre</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div data-slot="card"
+            class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-2 hover:bg-pink-50 hover:text-black border-2">
+            <div data-slot="card-content" class="[&amp;:last-child]:pb-6 p-8 text-center">
+              <div class="text-6xl mb-4">💖</div>
+              <h3 class="text-xl font-bold mb-2">Love</h3>
+              <p class="text-muted-foreground text-sm">Romantic tales and heartwarming moments</p>
+            </div>
+          </div>
+          <div data-slot="card"
+            class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-2 hover:bg-green-50 hover:text-black border-2">
+            <div data-slot="card-content" class="[&amp;:last-child]:pb-6 p-8 text-center">
+              <div class="text-6xl mb-4">🌍</div>
+              <h3 class="text-xl font-bold mb-2">Adventure</h3>
+              <p class="text-muted-foreground text-sm">Epic journeys and thrilling experiences</p>
+            </div>
+          </div>
+          <div data-slot="card"
+            class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-2 hover:bg-blue-50 hover:text-black border-2">
+            <div data-slot="card-content" class="[&amp;:last-child]:pb-6 p-8 text-center">
+              <div class="text-6xl mb-4">😢</div>
+              <h3 class="text-xl font-bold mb-2">Sad</h3>
+              <p class="text-muted-foreground text-sm">Moving stories of loss and reflection</p>
+            </div>
+          </div>
+          <div data-slot="card"
+            class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-2 hover:bg-purple-50 hover:text-black border-2">
+            <div data-slot="card-content" class="[&amp;:last-child]:pb-6 p-8 text-center">
+              <div class="text-6xl mb-4">🔪</div>
+              <h3 class="text-xl font-bold mb-2">Thriller</h3>
+              <p class="text-muted-foreground text-sm">Dark tales and mysterious encounters</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Stories -->
+    <section class="py-16 px-4 mx-auto w-9/12">
+        <h2 class="text-3xl font-bold text-center mb-5 ">Featured Stories</h2>
+        <div class="carousel h-80 rounded-2xl">
+            <div id="slide1" class="carousel-item relative w-full">
+                <img src="https://images.unsplash.com/photo-1670758108290-d3ef354bbffb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080" class="w-full h-full object-cover" />
+                <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+                    <a href="#slide4" class="btn btn-circle">❮</a>
+                    <a href="#slide2" class="btn btn-circle">❯</a>
+                </div>
+            </div>
+            <div id="slide2" class="carousel-item relative w-full">
+                <img src="https://images.unsplash.com/photo-1595368062405-e4d7840cba14?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080" class="w-full h-full object-cover" />
+                <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+                    <a href="#slide1" class="btn btn-circle">❮</a>
+                    <a href="#slide3" class="btn btn-circle">❯</a>
+                </div>
+            </div>
+            <div id="slide3" class="carousel-item relative w-full">
+                <img src="https://images.unsplash.com/photo-1694940492885-cde1f6a615ab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080" class="w-full h-full object-cover" />
+                <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+                    <a href="#slide2" class="btn btn-circle">❮</a>
+                    <a href="#slide4" class="btn btn-circle">❯</a>
+                </div>
+            </div>
+            <div id="slide4" class="carousel-item relative w-full">
+                <img src="https://images.unsplash.com/photo-1647264157150-491bfd016aa1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080" class="w-full h-full object-cover" />
+                <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+                    <a href="#slide3" class="btn btn-circle">❮</a>
+                    <a href="#slide1" class="btn btn-circle">❯</a>
+                </div>
+            </div>
+        </div>
+        <div class="flex w-full justify-center gap-2 py-2">
+            <a href="#slide1" class="btn btn-xs">1</a>
+            <a href="#slide2" class="btn btn-xs">2</a>
+            <a href="#slide3" class="btn btn-xs">3</a>
+            <a href="#slide4" class="btn btn-xs">4</a>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="py-16 px-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white">
+      <div class="container mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          <div>
+            <div class="text-4xl font-bold mb-2">31K+</div>
+            <div class="text-purple-100">Stories Shared</div>
+          </div>
+          <div>
+            <div class="text-4xl font-bold mb-2">5K+</div>
+            <div class="text-purple-100">Active Writers</div>
+          </div>
+          <div>
+            <div class="text-4xl font-bold mb-2">2006K+</div>
+            <div class="text-purple-100">Hearts Given</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ready to share -->
+    <section class="py-20 px-4 text-center">
+      <div class="container mx-auto max-w-2xl">
+        <h2 class="text-3xl font-bold mb-6">Ready to Share Your Story?</h2>
+        <p class="text-lg text-muted-foreground mb-8">Join thousands of storytellers sharing their experiences and
+          connecting through the power of narrative.</p>
+          <a href="/signup"
+          class="text-white bg-black inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive text-primary-foreground hover:bg-black/90 h-10 rounded-md has-[>svg]:px-4 text-lg px-8 py-6">
+          Get Started Free ✨</a>
+      </div>
+    </section>
+  </div>

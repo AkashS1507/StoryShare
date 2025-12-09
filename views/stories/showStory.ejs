@@ -1,0 +1,112 @@
+<% layout("boilerplate/boilerplate") %>
+
+<div class="max-w-4xl mx-auto p-5 md:p-2">
+    <div class="card border">
+      <figure> 
+        <img src="<%= story.image %>" alt="<%= story.title %>" class="h-56 md:h-72 w-full object-cover"/>
+      </figure>
+      <div class="card-body">
+        <h1 class="card-title text-2xl md:text-3xl"><%= story.title %></h1>
+        <p class="text-sm text-gray-500 mb-2">Category: <%= story.category %></p>
+        <p class="leading-relaxed whitespace-pre-line md:text-lg"><%= story.story %></p>
+        <div class="card-actions justify-end mx-auto md:mx-0 mt-6">
+          <a href="/stories" class="btn">⬅️<i class="fa-regular fa-arrow-left"></i>Back to Stories</a>
+          <span class="flex space-x-2">
+            <a href="/stories/<%= story._id %>/edit" class="btn btn-outline btn-primary px-6">Edit</a>
+            <form method="POST" action="/stories/<%= story._id %>?_method=DELETE" class="inline">
+              <button class="btn btn-outline btn-neutral">Delete</button>
+            </form>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Comment Section -->
+    <div class="mx-2 md:mx-0 space-y-4">
+    <h3 class="text-xl font-semibold mt-4">Comments</h3>
+    <form action="/stories/<%= story.id %>/reviews" method="POST" class="space-y-3">
+        <div class="rating">
+          <input type="radio" name="review[rating]" value="1" class="mask mask-star-2 bg-orange-400" aria-label="1 star" checked="checked" />
+          <input type="radio" name="review[rating]" value="2" class="mask mask-star-2 bg-orange-400" aria-label="2 star" />
+          <input type="radio" name="review[rating]" value="3" class="mask mask-star-2 bg-orange-400" aria-label="3 star" />
+          <input type="radio" name="review[rating]" value="4" class="mask mask-star-2 bg-orange-400" aria-label="4 star" />
+          <input type="radio" name="review[rating]" value="5" class="mask mask-star-2 bg-orange-400" aria-label="5 star" />
+        </div>
+        
+        <textarea name="review[comment]" placeholder="Share your thoughts about this story..." class="textarea textarea-primary w-full rounded-lg" required></textarea>
+        <div class="flex justify-end">
+            <button data-slot="button"
+                class="btn btn-outline btn-primary rounded-md">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-send w-4 h-4 mr-2" aria-hidden="true"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"></path><path d="m21.854 2.147-10.94 10.939"></path></svg>
+                Post Comment
+            </button>
+        </div>
+    </form>
+    </div>
+
+    <% for(review of story.reviews) { %>
+      <div class="space-y-4 mt-4">
+        <div data-slot="card" class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border">
+          <div data-slot="card-content" class="[&amp;:last-child]:pb-6 p-4">
+            <div class="flex items-start gap-3">
+              <div class="avatar avatar-placeholder">
+                <div class="bg-neutral text-neutral-content w-12 rounded-full">
+                  <span>A</span>
+                </div>
+              </div>
+            
+              <div class="">
+                <div class="flex flex-col md:flex-row md:items-baseline">
+                  <span class="font-medium">Emma Wilson</span>
+                  <span class="text-xs text-gray-500 md:ms-4" data-time="<%= review.createdAt %>"></span>
+                </div>
+
+                <div class="rating mt-2">
+                <% for (let i = 1; i <= 5; i++) { %>
+                  <input
+                    type="radio"
+                    class="mask mask-star-2 bg-orange-300"
+                    disabled
+                    <%= i === review.rating ? 'checked' : '' %>
+                  />
+                <% } %>
+                </div>
+                <p class="text-sm mt-2"><%= review.comment %></p>
+                <div class="flex items-center mt-2">
+                  <button class="likeBtn inline-flex items-center gap-1 text-xs h-6 px-2 text-gray-500 hover:text-black">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="w-4 h-4 fill-transparent stroke-current hover:fill-black transition-colors duration-100" aria-hidden="true">
+                      <path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"></path>
+                    </svg>
+                    <span class="likeCount"><%= Math.floor(Math.random() * (50 - 10 + 1)) + 10 %></span>
+                  </button>
+                  <form method="POST" action="/stories/<%= story._id %>/reviews/<%= review._id %>?_method=DELETE" class="inline">
+                    <button class="btn btn-soft btn-neutral btn-xs">Delete</button>
+                  </form>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% } %>
+  </div>
+
+<script>
+  // Select all like buttons
+  const buttons = document.querySelectorAll(".likeBtn");
+
+  buttons.forEach(btn => {
+    const countSpan = btn.querySelector(".likeCount");
+
+    btn.addEventListener("click", () => {
+      let count = parseInt(countSpan.innerText);
+      count++;
+      countSpan.innerText = count;
+    });
+  });
+</script>
+
+

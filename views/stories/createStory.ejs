@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StoryShare - Create</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-purple-50 flex flex-col">
+    <!-- Main Content -->
+    <section class="flex-1 flex items-center justify-center px-4 py-4">
+        <div class="w-full max-w-3xl">
+            <!-- Header -->
+            <div class="flex items-center justify-center gap-2 mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-open w-10 h-10 text-primary" aria-hidden="true"><path d="M12 7v14"></path><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"></path></svg>
+                <span class="text-2xl font-bold text-gray-900">Welcome</span>
+            </div>
+
+            <!-- Story Card -->
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
+                <!-- Heading -->
+                <div class="flex items-center justify-center gap-2 mb-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles w-6 h-6 text-pink-500" aria-hidden="true"> <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"> </path> <path d="M20 2v4"></path> <path d="M22 4h-4"></path> <circle cx="4" cy="20" r="2"></circle></svg>
+                    <span class="text-lg text-muted-foreground font-medium">Share your story</span>
+                </div>
+
+                <!-- Sign In Form -->
+                <form action="/stories/create" method="POST" class="space-y-6">
+                    <!-- Title Field -->
+                    <div>
+                        <label for="title" class="block text-sm font-medium text-gray-700 mb-2">
+                            Story Title
+                        </label>
+                        <input 
+                            type="text" 
+                            id="title" 
+                            name="story[title]"
+                            placeholder="Enter story title"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            required
+                        >
+                    </div>
+
+                    <!-- Category Field -->
+                    <div>
+                        <label for="category" class="block text-sm font-medium text-gray-700 mb-2">
+                            Category
+                        </label>
+                        <select name="story[category]" id="category" class="select w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                          <option disabled selected>Choose a category</option>
+                          <option>Love</option>
+                          <option>Adventure</option>    
+                          <option>Sad</option>
+                          <option>Thriller</option>
+                        </select>
+                    </div>
+
+                    <!-- Image url Field -->
+                    <div>
+                        <label for="image" class="block text-sm font-medium text-gray-700 mb-2">
+                            Cover Image
+                        </label>
+                        <input 
+                            type="text" 
+                            id="image" 
+                            name="story[image]"
+                            placeholder="Paste image URL"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        >
+                    </div>
+
+                    <!-- Story Field -->
+                    <div>
+                        <label for="story" class="block text-sm font-medium text-gray-700 mb-2">
+                            Your story
+                        </label>
+                        <textarea name="story[story]" id="story" class="textarea h-36 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Start writing your story.."></textarea>
+                    </div>
+
+                    <!-- Publish Button -->
+                    <button 
+                        type="submit"
+                        class="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-save w-4 h-4 mr-2" aria-hidden="true"> <path d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"> </path> <path d="M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7"></path> <path d="M7 3v4a1 1 0 0 0 1 1h7"></path></svg>
+                        Publish Story
+                    </button>
+                </form>
+            </div>
+
+            <!-- Bottom Navigation -->
+            <div class="p-4 flex mx-auto">
+                <div class="flex items-center text-black mx-auto">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                    </svg>
+                    <a href="/" class="text-sm hover:text-gray-900 transition-colors">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

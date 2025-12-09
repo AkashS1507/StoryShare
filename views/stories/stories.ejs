@@ -1,0 +1,21 @@
+<% layout("boilerplate/boilerplate") %>
+
+<h1 class="text-xl md:text-3xl font-bold my-4 ms-5 md:ms-2">All Stories</h1>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-5 md:p-2">
+    <% stories.forEach(story => { %>
+      <div class="card bg-base-100 border">
+        <figure>
+          <img src="<%= story.image %>" alt="<%= story.title %>" class="h-48 w-full object-cover"/>
+        </figure>
+        <div class="card-body">
+          <h2 class="card-title"><%= story.title %></h2>
+          <p class="text-sm text-gray-500"><%= story.category %></p>
+          <p><%= story.story.substring(0, 100) %>...</p>
+          <a href="/stories/<%= story._id %>" class="btn btn-soft btn-primary mt-4">Read More</a>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+
+  
