@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StoryShare</title>
     <link href="/src/output.css" rel="stylesheet">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/icon.png">
+    <meta name="theme-color" content="#000000">
 </head>
 <body class="mx-auto md:w-10/12 md:w-100">
     <%- include("../includes/navbar") %>
@@ -24,5 +27,13 @@
           el.textContent = dayjs(el.dataset.time).fromNow();
         });
     </script>
+
+    <!-- Web App -->
+    <script>
+    if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("/service-worker.js");
+    }
+    </script>
+
 </body>
 </html>
