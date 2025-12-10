@@ -1,22 +1,19 @@
-<!DOCTYPE html>
-<html>
+<% layout("boilerplate/boilerplate") %>
 
-<head>
-    <script async src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js"
-        data-clerk-publishable-key="<%= process.env.CLERK_PUBLISHABLE_KEY %>"></script>
-</head>
+<div class="flex flex-col justify-center items-center mt-4">
 
-<body>
-    <script>
-        window.onload = () => {
-            Clerk.load().then(() => {
-                Clerk.openSignIn({
-                    redirectUrl: "/"
-                });
-            });
-        };
-    </script>
+  <div id="sign-in"></div>
 
-</body>
+  <script>
+    window.onload = () => {
+      Clerk.load().then(() => {
+        Clerk.mountSignIn(document.getElementById("sign-in"), {
+          redirectUrl: "/"
+        });
+      });
+    };
+  </script>
 
-</html>
+  <a href="/" class="btn btn-neutral mt-4">Back to Home</a>
+
+</div>

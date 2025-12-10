@@ -41,10 +41,6 @@ app.get("/", (req, res) => {
     res.render("index.ejs");
 });
 
-app.get("/index2", (req, res) => {
-    res.render("index2.ejs");
-});
-
 app.get("/signin", (req, res) => {
   res.render("signin.ejs");
 });
