@@ -41,7 +41,7 @@ router.post("/create", isLoggedIn, validateStory, wrapAsync(async (req, res) => 
 
 // All stories
 router.get("/", async (req, res) => {
-  const stories = await Story.find({});
+  const stories = await Story.find({}).sort({ createdAt: -1 });
   res.render("stories/stories.ejs", { stories });
 });
 

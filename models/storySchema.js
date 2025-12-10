@@ -15,7 +15,7 @@ const storySchema = new mongoose.Schema({
       ref: "Review",
     }
   ],
-});
+}, { timestamps: true });
 
 storySchema.post("findOneAndDelete", async(story) => {
   if(story) {
