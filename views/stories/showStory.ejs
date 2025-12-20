@@ -61,7 +61,7 @@
             
               <div class="">
                 <div class="flex flex-col md:flex-row md:items-baseline">
-                  <span class="font-medium"><%= review.user.username %></span>
+                  <span class="font-medium"><%= review.user ? review.user.username : "Anonymous" %></span>
                   <span class="text-xs text-gray-500 md:ms-4" data-time="<%= review.createdAt %>"></span>
                 </div>
 
