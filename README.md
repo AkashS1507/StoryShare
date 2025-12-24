@@ -1,18 +1,33 @@
 # StoryShare
 
-StoryShare is a full-stack web application that allows users to create, share, and manage stories in a clean and modern interface. The platform focuses on simplicity, secure authentication, and a smooth writing experience.
+A full-stack web application where users can create, share, and manage stories with secure authentication and a clean, modern UI.
 
 🔗 Live Demo: https://sky-storyshare.onrender.com/
 
 ## Features
 - User authentication & authorization (Clerk)
 - Create, edit, view, and delete stories (CRUD)
-- Responsive UI with Tailwind CSS & DaisyUI
+- Responsive UI using Tailwind CSS & DaisyUI
 - Installable Progressive Web App (PWA)
 
 ## Tech Stack
-**Frontend:** EJS, Tailwind CSS, DaisyUI  
-**Backend:** Node.js, Express.js, MongoDB, Mongoose  
-**Authentication:** Clerk  
-**Utilities:** Joi, Connect-Flash, Day.js  
-**Deployment:** Render
+- **Frontend:** EJS, Tailwind CSS, DaisyUI
+- **Backend:** Node.js, Express.js, MongoDB, Mongoose
+- **Authentication:** Clerk
+- **Utilities:** Joi, Connect-Flash, Day.js
+- **Deployment:** Render
+
+## Quick Start
+
+### Backend & Server
+```bash
+git clone https://github.com/your-username/storyshare.git
+cd storyshare
+npm install
+nodemon app.js
+```
+
+### TailwindCSS
+```bash
+npx tailwindcss -i ./public/src/input.css -o ./public/src/output.css --watch
+```
