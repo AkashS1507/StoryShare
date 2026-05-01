@@ -16,7 +16,7 @@
           <span class="flex space-x-2">
             <a href="/stories/<%= story._id %>/edit" class="btn btn-outline btn-primary px-6">Edit</a>
             <form method="POST" action="/stories/<%= story._id %>?_method=DELETE" class="inline">
-              <button class="btn btn-outline btn-neutral">Delete</button>
+              <button class="btn btn-outline btn-error">Delete</button>
             </form>
           </span>
           <% } %>
@@ -88,7 +88,7 @@
 
                   <% if (userId && review.author === userId) { %>
                   <form method="POST" action="/stories/<%= story._id %>/reviews/<%= review._id %>?_method=DELETE" class="inline">
-                    <button class="btn btn-soft btn-neutral btn-xs">Delete</button>
+                    <button class="btn btn-soft btn-error btn-xs">Delete</button>
                   </form>
                   <% } %>
 
